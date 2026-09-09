@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Varsha 🎀</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#08070c;
+  color:#fff;
+  font-family:Poppins,sans-serif;
+  overflow-x:hidden;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.container{
+  width:100%;
+  max-width:480px;
+  text-align:center;
+  z-index:2;
+}
+
+h1,h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:500;
+}
+
+h1{
+  font-size:55px;
+  line-height:1;
+}
+
+h2{
+  font-size:42px;
+}
+
+p{
+  line-height:1.8;
+  color:#ddd;
+}
+
+/* ---------- OPENING ---------- */
+
+#opening{
+  background:
+    radial-gradient(circle at 50% 35%,#3a1832 0%,#08070c 55%);
+}
+
+.intro{
+  animation:fadeIn 2s ease;
+}
+
+.intro small{
+  letter-spacing:4px;
+  color:#dca4bd;
+  font-size:11px;
+}
+
+.intro h1{
+  margin:25px 0;
+}
+
+.intro h1 span{
+  color:#e7a8c4;
+}
+
+.intro p{
+  font-size:14px;
+  margin-bottom:35px;
+}
+
+.btn{
+  border:1px solid #dca4bd;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  padding:13px 25px;
+  border-radius:40px;
+  font-family:Poppins;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#dca4bd;
+  color:#180c14;
+  transform:translateY(-2px);
+}
+
+/* ---------- ENVELOPE ---------- */
+
+#letter{
+  background:linear-gradient(#08070c,#130b13);
+}
+
+.envelope{
+  width:290px;
+  height:190px;
+  margin:35px auto;
+  position:relative;
+  cursor:pointer;
+  perspective:800px;
+}
+
+.env-body{
+  position:absolute;
+  inset:0;
+  background:#b96f91;
+  border-radius:5px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-left:145px solid transparent;
+  border-right:145px solid transparent;
+  border-top:105px solid #d28baa;
+  transform-origin:top;
+  transition:1s;
+  z-index:4;
+}
+
+.letter-paper{
+  position:absolute;
+  width:245px;
+  height:160px;
+  left:23px;
+  bottom:0;
+  background:#fffafc;
+  color:#392530;
+  padding:20px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:18px;
+  transition:1s;
+  z-index:2;
+}
+
+.envelope.open .flap{
+  transform:rotateX(180deg);
+}
+
+.envelope.open .letter-paper{
+  transform:translateY(-115px);
+}
+
+/* ---------- MESSAGE ---------- */
+
+#message{
+  background:
+    radial-gradient(circle at 50% 50%,#301326,#08070c 65%);
+}
+
+.letter-text{
+  margin-top:30px;
+  padding:28px 22px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  background:rgba(255,255,255,.04);
+  text-align:left;
+  animation:fadeIn 1.5s ease;
+}
+
+.letter-text p{
+  margin-bottom:18px;
+  font-size:14px;
+}
+
+.highlight{
+  color:#e9abc5;
+}
+
+/* ---------- PHOTOS ---------- */
+
+#photos{
+  background:#0d0b10;
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:30px;
+}
+
+.photo{
+  height:210px;
+  background:#19151c;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
+  transform:rotate(-2deg);
+}
+
+.photo:nth-child(even){
+  transform:rotate(2deg);
+}
+
+.photo span{
+  color:#aaa;
+  font-size:12px;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ---------- CINEMATIC DATE ---------- */
+
+#date{
+  background:
+    linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.9)),
+    radial-gradient(circle at 50% 30%,#392047,#07070b 65%);
+}
+
+.date-number{
+  font-size:90px;
+  font-family:"Cormorant Garamond",serif;
+  letter-spacing:8px;
+  color:#f0b6cd;
+  text-shadow:0 0 40px rgba(240,182,205,.25);
+}
+
+.date-line{
+  width:70px;
+  height:1px;
+  background:#c78da9;
+  margin:20px auto;
+}
+
+.date-text{
+  font-family:"Cormorant Garamond",serif;
+  font-size:24px;
+}
+
+/* ---------- CAKE ---------- */
+
+#cake{
+  background:
+    radial-gradient(circle at 50% 40%,#382033,#08070c 65%);
+}
+
+.cake{
+  position:relative;
+  width:230px;
+  height:150px;
+  margin:45px auto 30px;
+}
+
+.layer{
+  position:absolute;
+  left:15px;
+  width:200px;
+  height:60px;
+  background:#c47b9b;
+  border-radius:10px;
+}
+
+.layer.one{
+  bottom:0;
+}
+
+.layer.two{
+  bottom:45px;
+  width:170px;
+  left:30px;
+  background:#d89ab3;
+}
+
+.layer.three{
+  bottom:85px;
+  width:135px;
+  left:47px;
+  background:#e8b6ca;
+}
+
+.candle{
+  position:absolute;
+  width:10px;
+  height:45px;
+  background:#fff;
+  bottom:130px;
+  border-radius:4px;
+}
+
+.c1{left:75px}
+.c2{left:110px}
+.c3{left:145px}
+
+.flame{
+  width:13px;
+  height:18px;
+  background:#ffc96b;
+  border-radius:50% 50% 50% 50%;
+  position:absolute;
+  top:-19px;
+  left:-1px;
+  box-shadow:0 0 20px #ffc96b;
+  animation:flicker .5s infinite alternate;
+}
+
+.blown .flame{
+  display:none;
+}
+
+.wish{
+  margin-top:25px;
+  opacity:0;
+  transition:1s;
+}
+
+.wish.show{
+  opacity:1;
+}
+
+/* ---------- NIGHT ---------- */
+
+#night{
+  background:#03040a;
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#fff 1px,transparent 1px);
+  background-size:80px 80px,130px 130px;
+  background-position:10px 20px,40px 70px;
+  opacity:.35;
+}
+
+.moon{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:#f8edf1;
+  box-shadow:0 0 50px rgba(255,255,255,.15);
+  margin:0 auto 40px;
+}
+
+.night-text{
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  line-height:1.5;
+}
+
+/* ---------- GIFT ---------- */
+
+#gift{
+  background:
+    radial-gradient(circle at 50% 45%,#3b172d,#08070c 65%);
+}
+
+.gift{
+  width:130px;
+  height:110px;
+  background:#d17d9e;
+  margin:40px auto;
+  position:relative;
+  cursor:pointer;
+  border-radius:5px;
+  transition:.4s;
+}
+
+.gift:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:22px;
+  height:100%;
+  background:#f1c0d2;
+}
+
+.gift:after{
+  content:"";
+  position:absolute;
+  top:-18px;
+  left:-10px;
+  width:150px;
+  height:25px;
+  background:#e39ab8;
+  border-radius:5px;
+}
+
+.gift.open{
+  transform:scale(1.1) rotate(-2deg);
+  opacity:0;
+}
+
+.final{
+  display:none;
+}
+
+.final.show{
+  display:block;
+  animation:fadeIn 1.5s ease;
+}
+
+.final h1{
+  color:#e9abc5;
+}
+
+.final p{
+  margin-top:20px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes flicker{
+  from{
+    transform:scale(.9);
+  }
+  to{
+    transform:scale(1.1);
+  }
+}
+
+@media(max-width:380px){
+  h1{font-size:45px}
+  h2{font-size:35px}
+  .date-number{font-size:75px}
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= OPENING ================= -->
+
+<section id="opening">
+
+<div class="container intro">
+
+<small>12 • 09 • 2010</small>
+
+<h1>
+Hey <span>Varsha...</span>
+</h1>
+
+<p>
+Aaj ka din thoda special hai.<br>
+Isliye aapke liye kuch chhota sa banaya hai. 🤍
+</p>
+
+<button class="btn"
+onclick="goTo('letter')">
+Tap to begin →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= ENVELOPE ================= -->
+
+<section id="letter">
+
+<div class="container">
+
+<small>YOU HAVE A LITTLE LETTER 💌</small>
+
+<div
+class="envelope"
+id="envelope"
+onclick="openLetter()">
+
+<div class="env-body"></div>
+
+<div class="letter-paper">
+For Varsha 🤍<br><br>
+A little birthday surprise...
+</div>
+
+<div class="flap"></div>
+
+</div>
+
+<p id="envHint">
+Tap the envelope to open it.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<section id="message">
+
+<div class="container">
+
+<small>A LETTER FOR YOU</small>
+
+<h2>Dear Varsha,</h2>
+
+<div class="letter-text">
+
+<p>
+Aaj bas dil se yahi wish karta hoon ki
+<span class="highlight">aap hamesha khush raho</span> 🥺🤍
+</p>
+
+<p>
+Aapke saare dreams poore ho,
+aapko life mein har woh khushi mile
+jo aap deserve karti ho aur aapki woh
+beautiful smile kabhi kam na ho. ❤️
+</p>
+
+<p>
+Aap meri life mein kya ho,
+shayad main kabhi perfectly words mein
+explain na kar paun. 🥺
+</p>
+
+<p>
+Bas itna jaanta hoon ki
+<span class="highlight">aap mere liye ordinary nahi ho.</span> 🤍
+</p>
+
+<p>
+Aaj ka din sirf aapka hai...
+isliye bas smile karte rehna,
+khush rehna aur apna bahut saara
+khayal rakhna. 🌷
+</p>
+
+<p>
+Once again,
+<br>
+<strong>Happiest Birthday to youuu, Varsha! 🥹❤️🎂</strong>
+</p>
+
+<p>
+Hamesha khush rehna. 🤍🫶🏻
+</p>
+
+</div>
+
+<br>
+
+<button class="btn"
+onclick="goTo('photos')">
+Aage dekhiye → ✨
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= PHOTOS ================= -->
+
+<section id="photos">
+
+<div class="container">
+
+<small>A FEW LITTLE MEMORIES 📸</small>
+
+<h2>Moments ✨</h2>
+
+<div class="photo-grid">
+
+<div class="photo">
+<span>PHOTO_1 📷</span>
+<!-- Replace with:
+<img src="PHOTO_1.jpg">
+-->
+</div>
+
+<div class="photo">
+<span>PHOTO_2 📷</span>
+<!-- Replace with:
+<img src="PHOTO_2.jpg">
+-->
+</div>
+
+<div class="photo">
+<span>PHOTO_3 📷</span>
+<!-- Replace with:
+<img src="PHOTO_3.jpg">
+-->
+</div>
+
+<div class="photo">
+<span>PHOTO_4 📷</span>
+<!-- Replace with:
+<img src="PHOTO_4.jpg">
+-->
+</div>
+
+</div>
+
+<br><br>
+
+<button class="btn"
+onclick="goTo('date')">
+Next → 🎞️
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= DATE ================= -->
+
+<section id="date">
+
+<div class="container">
+
+<small>A DAY WORTH CELEBRATING</small>
+
+<div class="date-number">
+12 • 09
+</div>
+
+<div class="date-line"></div>
+
+<div class="date-text">
+2010 — The day someone special was born. 🤍
+</div>
+
+<br><br>
+
+<button class="btn"
+onclick="goTo('cake')">
+One more surprise → 🎂
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= CAKE ================= -->
+
+<section id="cake">
+
+<div class="container">
+
+<small>MAKE A WISH 🎂</small>
+
+<h2>One little cake for you</h2>
+
+<div class="cake"
+onclick="blowCandles()">
+
+<div class="layer one"></div>
+<div class="layer two"></div>
+<div class="layer three"></div>
+
+<div class="candle c1">
+<div class="flame"></div>
+</div>
+
+<div class="candle c2">
+<div class="flame"></div>
+</div>
+
+<div class="candle c3">
+<div class="flame"></div>
+</div>
+
+</div>
+
+<p>
+Candles par tap kijiye... ✨
+</p>
+
+<div class="wish" id="wish">
+<h2>Make a wish. 🌷</h2>
+<p>
+Dil se ki hui wishes zaroor special hoti hain. 🤍
+</p>
+
+<br>
+
+<button class="btn"
+onclick="goTo('night')">
+Aage → 🌙
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= NIGHT ================= -->
+
+<section id="night">
+
+<div class="stars"></div>
+
+<div class="container" style="z-index:2">
+
+<div class="moon"></div>
+
+<p class="night-text">
+Aap meri life mein kya ho,<br>
+shayad main kabhi words mein explain na kar paun...
+<br><br>
+Bas itna jaanta hoon—
+<br>
+<span class="highlight">
+aap mere liye ordinary nahi ho. 🤍
+</span>
+</p>
+
+<br><br>
+
+<button class="btn"
+onclick="goTo('gift')">
+Last surprise → 🎁
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= GIFT ================= -->
+
+<section id="gift">
+
+<div class="container">
+
+<div id="giftStart">
+
+<small>ONE LAST THING...</small>
+
+<h2>Ye aapke liye hai. 🎁</h2>
+
+<div class="gift"
+onclick="openGift()">
+</div>
+
+<p>
+Gift ko open karne ke liye tap kijiye. 👀
+</p>
+
+</div>
+
+
+<div class="final" id="final">
+
+<small>12 • 09 • 2010</small>
+
+<h1>
+Happiest Birthday,<br>
+Varsha 🎀
+</h1>
+
+<p>
+Aap hamesha aise hi khush raho,
+hamesha smile karti raho,
+aur life mein woh sab pao
+jo aap deserve karti ho. 🤍
+</p>
+
+<br>
+
+<p>
+Take care of yourself<br>
+and keep smiling. 🌷
+</p>
+
+<br>
+
+<p>
+<strong>
+Once again... Happiest Birthday to youuu! 🥹❤️🎂
+</strong>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* Smooth navigation */
+
+function goTo(id){
+
+  document.getElementById(id)
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* Envelope */
+
+function openLetter(){
+
+  const envelope =
+  document.getElementById("envelope");
+
+  envelope.classList.add("open");
+
+  document.getElementById("envHint")
+  .innerHTML =
+  "Aapke liye ek chhota sa message... 🤍";
+
+  setTimeout(()=>{
+    goTo("message");
+  },1500);
+
+}
+
+
+/* Cake */
+
+function blowCandles(){
+
+  const cake =
+  document.querySelector(".cake");
+
+  cake.classList.add("blown");
+
+  document.getElementById("wish")
+  .classList.add("show");
+
+}
+
+
+/* Gift */
+
+function openGift(){
+
+  const gift =
+  document.querySelector(".gift");
+
+  gift.classList.add("open");
+
+  setTimeout(()=>{
+
+    document.getElementById("giftStart")
+    .style.display="none";
+
+    document.getElementById("final")
+    .classList.add("show");
+
+    createSparkles();
+
+  },500);
+
+}
+
+
+/* Final sparkles */
+
+function createSparkles(){
+
+  for(let i=0;i<45;i++){
+
+    const star =
+    document.createElement("div");
+
+    star.innerHTML="✦";
+
+    star.style.position="fixed";
+    star.style.left=
+    Math.random()*100+"vw";
+    star.style.top=
+    Math.random()*100+"vh";
+    star.style.color="#f0b6cd";
+    star.style.fontSize=
+    (8+Math.random()*15)+"px";
+    star.style.pointerEvents="none";
+    star.style.animation=
+    "fadeIn 1s ease";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>{
+      star.remove();
+    },2500);
+
+  }
+
+}
+
+</script>
+
+</body>
+  </html>
