@@ -1,288 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>For Varsha ♡</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
-body{background:#f8e9cf;color:#7d3430;font-family:"DM Sans",sans-serif}
-.page{position:fixed;inset:0;width:100vw;height:100dvh;display:none;overflow:hidden;background:#f8e9cf}
-.page.active{display:flex;animation:in .8s ease both}
-@keyframes in{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:scale(1)}}
-.wrap{width:min(92vw,520px);margin:auto;text-align:center;position:relative;z-index:3}
-.script{font-family:"Cormorant Garamond",serif;font-style:italic}
-h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;margin:0}
-h1{font-size:clamp(52px,16vw,86px);line-height:.9}
-h2{font-size:clamp(38px,11vw,60px)}
-.sub{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.55}
-.next{border:1px solid #9d5b55;background:rgba(255,255,255,.25);color:#7d3430;border-radius:50px;padding:12px 25px;margin-top:25px;font:400 13px "DM Sans";cursor:pointer}
-.back{position:absolute;left:15px;top:15px;border:0;background:none;color:#9d5b55;z-index:9;font-size:12px}
-
-/* flower opening */
-.flower{position:absolute;font-size:clamp(30px,10vw,58px);animation:sway 4s ease-in-out infinite;opacity:.85}
-.f1{left:4%;top:10%}.f2{right:5%;top:17%;animation-delay:1s}.f3{left:10%;bottom:10%;animation-delay:2s}.f4{right:10%;bottom:7%;animation-delay:.5s}
-.petal{position:absolute;width:10px;height:15px;background:#d48b91;border-radius:70% 30% 70% 30%;opacity:.55;animation:drop 8s linear infinite}
-@keyframes sway{50%{transform:rotate(8deg) translateY(-7px)}}
-@keyframes drop{0%{transform:translateY(-20px) rotate(0);opacity:0}15%{opacity:.5}100%{transform:translateY(110vh) rotate(400deg);opacity:0}}
-
-/* envelope */
-.envbox{width:300px;height:190px;margin:32px auto 8px;position:relative;cursor:pointer;filter:drop-shadow(0 16px 20px #744c3220)}
-.envback{position:absolute;inset:0;background:#d7958d;border-radius:4px}
-.flap{position:absolute;top:0;left:0;border-left:150px solid transparent;border-right:150px solid transparent;border-top:105px solid #e5aca3;transform-origin:top;transition:.9s;z-index:5}
-.envpaper{position:absolute;left:25px;bottom:8px;width:250px;height:155px;background:#fff9ef;padding:20px;font:20px "Cormorant Garamond",serif;z-index:2;transition:.9s}
-.envbox.open .flap{transform:rotateX(180deg)}
-.envbox.open .envpaper{transform:translateY(-100px)}
-
-/* password */
-.keypad{width:250px;margin:22px auto 0}
-.display{height:45px;background:#fff7e9;border:1px solid #e0c8aa;border-radius:10px;margin-bottom:14px;font:25px "Cormorant Garamond";letter-spacing:8px;padding:7px}
-.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.key{height:43px;border:1px solid #e0c8aa;border-radius:50%;background:#fff7e9;color:#7d3430;font-size:13px}
-.error{height:20px;font-size:11px;color:#a24e48;margin-top:7px}
-
-/* flower center */
-.flowerbouquet{font-size:75px;margin:25px auto;animation:breathe 2.5s ease-in-out infinite}
-@keyframes breathe{50%{transform:scale(1.06)}}
-
-/* photos */
-.gallery{height:410px;position:relative;margin-top:8px}
-.polaroid{position:absolute;background:#fff;padding:9px 9px 32px;width:155px;height:195px;box-shadow:0 12px 24px #60442a22}
-.photo{width:100%;height:153px;background:#eadfd0;display:flex;align-items:center;justify-content:center;color:#927b70;font-size:10px;overflow:hidden}
-.photo img{width:100%;height:100%;object-fit:cover}
-.polaroid small{position:absolute;bottom:8px;left:0;right:0;font:16px "Cormorant Garamond"}
-.pa{left:2%;top:35px;transform:rotate(-8deg)}.pb{right:2%;top:8px;transform:rotate(7deg)}
-.pc{left:18%;top:165px;transform:rotate(4deg)}.pd{right:18%;top:175px;transform:rotate(-5deg)}
-
-/* letter */
-.letterpage{height:68vh;overflow:auto;background:#fff7ec;padding:24px 20px;text-align:left;box-shadow:0 12px 35px #5c3e2a17;border:1px solid #ead7bd}
-.letterpage p{font:20px/1.55 "Cormorant Garamond",serif;margin:0 0 17px;color:#633e3b}
-.letterpage .dear{font-size:27px}
-
-/* date/cake */
-.dark{background:#3a2021;color:#f9e7cf}
-.date{font:clamp(75px,24vw,125px) "Cormorant Garamond";letter-spacing:4px;color:#efb5a7}
-.cake{width:220px;height:185px;position:relative;margin:28px auto;cursor:pointer}
-.tier{position:absolute;left:10px;bottom:0;width:200px;height:62px;border-radius:10px;background:#c98082}
-.tier.t2{left:30px;bottom:51px;width:160px;height:53px;background:#dc9b96}
-.tier.t3{left:52px;bottom:96px;width:116px;height:43px;background:#edb8aa}
-.candle{position:absolute;bottom:134px;width:10px;height:39px;background:#fff5df}
-.c1{left:72px}.c2{left:105px}.c3{left:138px}
-.flame{position:absolute;left:-2px;top:-17px;width:14px;height:19px;background:#f0aa62;border-radius:50%;box-shadow:0 0 17px #f0aa62;animation:flick .45s infinite alternate}
-@keyframes flick{to{transform:scale(1.18)}}
-.blown .flame{display:none}
-
-/* night/final */
-.night{background:#171216;color:#f9e8d7}
-.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#fff 1px,transparent 1px);background-size:73px 73px,121px 121px;background-position:8px 12px,41px 58px;opacity:.38}
-.moon{width:95px;height:95px;background:#fff0d9;border-radius:50%;margin:0 auto 35px;box-shadow:0 0 50px #fff2}
-.night p{font:27px/1.45 "Cormorant Garamond";font-style:italic}
-.feelings{height:68vh;overflow:auto;text-align:left}
-.feelings p{font:20px/1.55 "Cormorant Garamond";margin:0 0 18px;color:#633e3b}
-.feelings .lead{font-size:29px}
-.final{background:radial-gradient(circle at center,#6b343a,#211416 65%);color:#fff3e6}
-.final h1{color:#f4b7b1}
-.final p{font:22px/1.45 "Cormorant Garamond";font-style:italic}
-.confetti{position:fixed;top:-15px;width:7px;height:14px;z-index:20;animation:conf 3.5s linear forwards}
-@keyframes conf{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:"DM Sans",sans-serif;background:#f7e9d2;color:#70403a}
+.page{position:fixed;inset:0;display:none;width:100%;height:100dvh;background:#f7e9d2;overflow:hidden}
+.page.active{display:flex;animation:pageIn .65s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.wrap{width:min(92vw,500px);margin:auto;text-align:center;position:relative;z-index:5}
+.serif{font-family:"Cormorant Garamond",serif}
+.italic{font-family:"Cormorant Garamond",serif;font-style:italic}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;margin:0}
+h1{font-size:clamp(54px,16vw,84px);line-height:.9}
+h2{font-size:clamp(40px,12vw,62px);line-height:.95}
+.mini{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;opacity:.58}
+.btn{border:1px solid #9e635c;background:#fff6e8aa;color:#70403a;border-radius:30px;padding:12px 26px;font-size:13px;cursor:pointer}
+.back{position:absolute;top:15px;left:16px;border:0;background:none;color:#8e5b54;z-index:10;font-size:12px}
+.flowers{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.flower{position:absolute;font-size:32px;filter:saturate(.8);animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-7px) rotate(4deg)}}
+.fall{position:absolute;top:-35px;font-size:17px;animation:fall 7s linear infinite;opacity:0}
+@keyframes fall{0%{transform:translateY(-30px) rotate(0);opacity:0}12%{opacity:.8}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+.border{position:absolute;inset:0;pointer-events:none;z-index:2}
+.border:before,.border:after{content:"";position:absolute;left:-5%;right:-5%;height:105px;background:
+radial-gradient(ellipse at 8% 50%,#d88987 0 17px,transparent 18px),
+radial-gradient(ellipse at 16% 30%,#efb7a5 0 20px,transparent 21px),
+radial-gradient(ellipse at 25% 62%,#c97879 0 15px,transparent 16px),
+radial-gradient(ellipse at 35% 35%,#f0c5a7 0 18px,transparent 19px),
+radial-gradient(ellipse at 45% 65%,#d98f91 0 20px,transparent 21px),
+radial-gradient(ellipse at 56% 32%,#eab09c 0 16px,transparent 17px),
+radial-gradient(ellipse at 67% 62%,#c97879 0 18px,transparent 19px),
+radial-gradient(ellipse at 78% 35%,#efb9a5 0 20px,transparent 21px),
+radial-gradient(ellipse at 90% 60%,#d78988 0 18px,transparent 19px);
+background-size:100% 100%;opacity:.95}
+.border:before{top:-10px}.border:after{bottom:-10px;transform:rotate(180deg)}
+.opening .border{animation:shrink 2.4s 1.2s ease forwards}
+@keyframes shrink{to{opacity:.08;transform:scale(.78)}}
+.giftIcon{font-size:76px;margin:28px 0 8px;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.note{font-size:18px;margin:8px 0 22px}
+.keypad{width:255px;margin:18px auto}.display{height:43px;border:1px solid #ddc7a7;background:#fff8eb;border-radius:12px;padding:7px;font:25px "Cormorant Garamond";letter-spacing:8px}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.key{height:43px;border:1px solid #ddc7a7;border-radius:50%;background:#fff8eb;color:#70403a}.error{height:18px;font-size:11px;margin-top:6px}
+.envelope{width:290px;height:180px;margin:25px auto;position:relative;cursor:pointer}.envback{position:absolute;inset:0;background:#d28a86;border-radius:5px}.envpaper{position:absolute;left:23px;bottom:8px;width:244px;height:145px;background:#fffaf0;z-index:2;padding:20px;font:20px "Cormorant Garamond";transition:.7s}.flap{position:absolute;z-index:4;top:0;border-left:145px solid transparent;border-right:145px solid transparent;border-top:100px solid #e4a39a;transform-origin:top;transition:.7s}.envelope.open .flap{transform:rotateX(180deg)}.envelope.open .envpaper{transform:translateY(-75px)}
+.letter{height:70vh;overflow:auto;text-align:left;background:#fff8ed;border:1px solid #e7d5ba;box-shadow:0 15px 35px #5e3b2618;padding:22px}.letter p{font:20px/1.5 "Cormorant Garamond";margin:0 0 16px}.dear{font-size:28px!important}
+.gallery{height:410px;position:relative;margin-top:5px}.card{position:absolute;width:150px;height:190px;background:#fff;padding:8px 8px 30px;box-shadow:0 12px 25px #4f302318}.pic{height:151px;background:#eadfd1;display:flex;align-items:center;justify-content:center;font-size:10px;color:#987d73;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}.card small{position:absolute;bottom:7px;left:0;right:0;font:15px "Cormorant Garamond"}.a{left:1%;top:30px;transform:rotate(-7deg)}.b{right:1%;top:5px;transform:rotate(7deg)}.c{left:17%;top:165px;transform:rotate(4deg)}.d{right:17%;top:175px;transform:rotate(-5deg)}
+.date{font:clamp(78px,24vw,125px) "Cormorant Garamond";color:#bd716d;letter-spacing:3px;margin:20px 0}
+.dark{background:#302022;color:#f8e6d0}.dark .btn{color:#f8e6d0;border-color:#bd8980;background:#ffffff12}.dark .mini{opacity:.7}
+.cake{width:220px;height:180px;margin:20px auto;position:relative;cursor:pointer}.tier{position:absolute;bottom:0;left:10px;width:200px;height:58px;border-radius:10px;background:#bd777a}.tier2{bottom:48px;left:30px;width:160px;height:50px;background:#d8948e}.tier3{bottom:90px;left:52px;width:116px;height:40px;background:#e8b2a2}.candle{position:absolute;bottom:128px;width:10px;height:38px;background:#fff3da}.c1{left:72px}.c2{left:105px}.c3{left:138px}.flame{position:absolute;left:-2px;top:-16px;width:14px;height:19px;background:#f1aa62;border-radius:50%;box-shadow:0 0 15px #f1aa62;animation:flick .4s infinite alternate}@keyframes flick{to{transform:scale(1.2)}}.blown .flame{display:none}
+.night{background:#171216;color:#f7e8d9}.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#fff 1px,transparent 1px);background-size:73px 73px,121px 121px;opacity:.35}.moon{width:94px;height:94px;border-radius:50%;background:#fff0d9;margin:0 auto 35px;box-shadow:0 0 45px #fff2}.nightText{font:26px/1.5 "Cormorant Garamond";font-style:italic}.feel{height:69vh;overflow:auto;text-align:left;background:#fff8ed;padding:20px}.feel p{font:20px/1.52 "Cormorant Garamond";margin:0 0 17px}.feel .big{font-size:28px}.final{background:radial-gradient(circle,#723a3e,#211416 70%);color:#fff0e4}.final h1{color:#efb1ac}.conf{position:fixed;top:-15px;width:7px;height:14px;animation:conf 3.5s linear forwards;z-index:20}@keyframes conf{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
 </style>
 </head>
 <body>
 
-<section class="page active" id="p1">
-  <span class="flower f1">🌷</span><span class="flower f2">🌸</span><span class="flower f3">🌷</span><span class="flower f4">🌸</span>
-  <script>
-    for(let i=0;i<24;i++){let x=document.createElement('i');x.className='petal';x.style.left=Math.random()*100+'%';x.style.animationDelay=Math.random()*7+'s';x.style.animationDuration=5+Math.random()*5+'s';document.currentScript.parentElement.appendChild(x)}
-  </script>
-  <div class="wrap">
-    <div class="sub">12 • 09</div>
-    <h1>From me<br><span style="color:#bd716b">to you.</span> 🤍</h1>
-    <p class="script" style="font-size:20px;margin:22px 0">A little something made with care...</p>
-    <button class="next" onclick="go(2)">Open it ♡</button>
-  </div>
+<!-- 1: VIDEO-STYLE FLOWER OPENING -->
+<section class="page active opening" id="p1">
+ <div class="border"></div><div class="flowers" id="flowers"></div>
+ <div class="wrap">
+  <div class="mini">A little birthday surprise</div>
+  <h1>For you,<br><span style="color:#b96765">my favourite person.</span> 🤍</h1>
+  <p class="italic note">I made a tiny little world for you...</p>
+  <button class="btn" onclick="go(2)">Open ♡</button>
+ </div>
 </section>
 
-<section class="page" id="p2">
-  <button class="back" onclick="go(1)">← Back</button>
-  <div class="wrap">
-    <div class="sub">A small surprise</div>
-    <h2>For Varsha 💌</h2>
-    <div class="envbox" id="env" onclick="openEnv()">
-      <div class="envback"></div>
-      <div class="envpaper">A little letter<br>for someone<br>very special. 🤍</div>
-      <div class="flap"></div>
-    </div>
-    <p id="envhint" class="script" style="font-size:20px">Tap the envelope...</p>
-    <button class="next" onclick="go(3)">Next →</button>
-  </div>
+<!-- 2: GIFT, LIKE THE VIDEO -->
+<section class="page" id="p2"><button class="back" onclick="go(1)">← Back</button>
+ <div class="wrap"><div class="mini">A small gift</div><div class="giftIcon">🎁</div>
+ <h2>For you,<br>my baby.</h2><p class="italic note">There is something waiting inside...</p>
+ <button class="btn" onclick="go(3)">Next →</button></div>
 </section>
 
-<section class="page" id="p3">
-  <button class="back" onclick="go(2)">← Back</button>
-  <div class="wrap">
-    <div class="sub">A tiny little lock</div>
-    <h2>Can you unlock it? 🔐</h2>
-    <p class="script" style="font-size:18px;margin:7px 0">Hint: your special date • 12 09</p>
-    <div class="keypad">
-      <div class="display" id="display">••••</div>
-      <div class="keys">
-        <button class="key" onclick="key(1)">1</button><button class="key" onclick="key(2)">2</button><button class="key" onclick="key(3)">3</button>
-        <button class="key" onclick="key(4)">4</button><button class="key" onclick="key(5)">5</button><button class="key" onclick="key(6)">6</button>
-        <button class="key" onclick="key(7)">7</button><button class="key" onclick="key(8)">8</button><button class="key" onclick="key(9)">9</button>
-        <button class="key" onclick="clearKey()">⌫</button><button class="key" onclick="key(0)">0</button><button class="key" onclick="unlock()">✓</button>
-      </div>
-      <div class="error" id="err"></div>
-    </div>
-    <button class="next" onclick="go(4)">Skip →</button>
-  </div>
+<!-- 3: BIRTHDAY LOCK -->
+<section class="page" id="p3"><button class="back" onclick="go(2)">← Back</button>
+ <div class="wrap"><div class="mini">Unlock your surprise</div><h2 style="font-size:39px">Enter your birthday ♡</h2>
+ <p class="italic">Hint: 12 • 09</p>
+ <div class="keypad"><div class="display" id="display">••••</div><div class="keys">
+ <button class="key" onclick="key(1)">1</button><button class="key" onclick="key(2)">2</button><button class="key" onclick="key(3)">3</button>
+ <button class="key" onclick="key(4)">4</button><button class="key" onclick="key(5)">5</button><button class="key" onclick="key(6)">6</button>
+ <button class="key" onclick="key(7)">7</button><button class="key" onclick="key(8)">8</button><button class="key" onclick="key(9)">9</button>
+ <button class="key" onclick="clr()">⌫</button><button class="key" onclick="key(0)">0</button><button class="key" onclick="unlock()">✓</button>
+ </div><div class="error" id="err"></div></div>
+ <button class="btn" onclick="go(4)">Skip →</button></div>
 </section>
 
-<section class="page" id="p4">
-  <div class="wrap">
-    <div class="sub">And here it is...</div>
-    <div class="flowerbouquet">🌸🌷🌸</div>
-    <h2>Something made<br>just for you. 🤍</h2>
-    <p class="script" style="font-size:20px">Because some people deserve a little extra happiness.</p>
-    <button class="next" onclick="go(5)">Next →</button>
-  </div>
-</section>
+<!-- 4: FLOWERS + FROM ME TO YOU -->
+<section class="page opening" id="p4"><div class="border"></div><div class="wrap">
+ <div class="mini">A letter from my heart</div><h1 style="font-size:55px">From me<br><span style="color:#b96765">to you.</span></h1>
+ <p class="italic note">A few words I wanted you to read...</p><button class="btn" onclick="go(5)">Next →</button>
+</div></section>
 
-<section class="page" id="p5">
-  <button class="back" onclick="go(4)">← Back</button>
-  <div class="wrap">
-    <div class="sub">A few little moments</div>
-    <h2>Memories 📸</h2>
-    <div class="gallery">
-      <div class="polaroid pa"><div class="photo"><span>PHOTO 1</span></div><small>little moment ♡</small></div>
-      <div class="polaroid pb"><div class="photo"><span>PHOTO 2</span></div><small>beautiful day</small></div>
-      <div class="polaroid pc"><div class="photo"><span>PHOTO 3</span></div><small>that smile 🌷</small></div>
-      <div class="polaroid pd"><div class="photo"><span>PHOTO 4</span></div><small>worth remembering</small></div>
-    </div>
-    <button class="next" onclick="go(6)">Next →</button>
-  </div>
-</section>
+<!-- 5: PHOTO COLLAGE -->
+<section class="page" id="p5"><button class="back" onclick="go(4)">← Back</button><div class="wrap">
+ <div class="mini">Little moments</div><h2>Memories 📸</h2>
+ <div class="gallery">
+  <div class="card a"><div class="pic"><span>YOUR PHOTO 1</span></div><small>little moment ♡</small></div>
+  <div class="card b"><div class="pic"><span>YOUR PHOTO 2</span></div><small>beautiful day</small></div>
+  <div class="card c"><div class="pic"><span>YOUR PHOTO 3</span></div><small>that smile</small></div>
+  <div class="card d"><div class="pic"><span>YOUR PHOTO 4</span></div><small>worth remembering</small></div>
+ </div><button class="btn" onclick="go(6)">Next →</button></div></section>
 
-<section class="page" id="p6">
-  <button class="back" onclick="go(5)">← Back</button>
-  <div class="wrap">
-    <div class="sub">A birthday wish</div>
-    <div class="date">12 • 09</div>
-    <p class="script" style="font-size:24px">The day a beautiful soul was born. 🤍</p>
-    <button class="next" onclick="go(7)">Continue →</button>
-  </div>
-</section>
+<!-- 6: SHORT QUOTE -->
+<section class="page" id="p6"><button class="back" onclick="go(5)">← Back</button><div class="wrap">
+ <div class="mini">Just a little truth</div><h2 style="font-size:45px">For you,<br>with all my heart.</h2>
+ <p class="italic note">Some people become special without even trying.</p><button class="btn" onclick="go(7)">Next →</button></div></section>
 
-<section class="page" id="p7">
-  <button class="back" onclick="go(6)">← Back</button>
-  <div class="wrap">
-    <div class="sub">Make a wish</div>
-    <h2>A little cake for you 🎂</h2>
-    <div class="cake" id="cake" onclick="blow()">
-      <div class="tier"></div><div class="tier t2"></div><div class="tier t3"></div>
-      <div class="candle c1"><span class="flame"></span></div>
-      <div class="candle c2"><span class="flame"></span></div>
-      <div class="candle c3"><span class="flame"></span></div>
-    </div>
-    <p id="cakehint" class="script" style="font-size:20px">Tap the candles ✨</p>
-    <button class="next" onclick="go(8)">Next →</button>
-  </div>
-</section>
+<!-- 7: DATE -->
+<section class="page opening" id="p7"><div class="border"></div><div class="wrap">
+ <div class="mini">The special day</div><div class="date">12 • 09</div>
+ <p class="italic" style="font-size:24px">The day a beautiful soul was born. 🤍</p><button class="btn" onclick="go(8)">Continue →</button></div></section>
 
-<section class="page night" id="p8">
-  <div class="stars"></div>
-  <div class="wrap">
-    <div class="moon"></div>
-    <p>Aap meri life mein kya ho,<br>shayad main kabhi perfectly<br>words mein explain na kar paun...<br><br>
-    Bas itna jaanta hoon —<br><span style="color:#f0b7af">aap mere liye ordinary nahi ho. 🤍</span></p>
-    <button class="next" style="color:#f9e8d7;border-color:#c58b83" onclick="go(9)">One last surprise →</button>
-  </div>
-</section>
+<!-- 8: CAKE -->
+<section class="page" id="p8"><button class="back" onclick="go(7)">← Back</button><div class="wrap">
+ <div class="mini">Make a wish</div><h2>A cake for you 🎂</h2>
+ <div class="cake" id="cake" onclick="blow()"><div class="tier"></div><div class="tier tier2"></div><div class="tier tier3"></div>
+ <div class="candle c1"><i class="flame"></i></div><div class="candle c2"><i class="flame"></i></div><div class="candle c3"><i class="flame"></i></div></div>
+ <p class="italic" id="cakeText">Tap the candles ✨</p><button class="btn" onclick="go(9)">Next →</button></div></section>
 
-<section class="page" id="p9">
-  <div class="wrap">
-    <div class="sub">One last thing...</div>
-    <h2>For you 🎁</h2>
-    <div id="gift" style="width:145px;height:115px;background:#c77d83;margin:45px auto 25px;position:relative;border-radius:5px;cursor:pointer;transition:.5s" onclick="gift()">
-      <div id="lid" style="position:absolute;left:-7px;top:-20px;width:159px;height:28px;background:#df9d9a;border-radius:5px;transition:.6s"></div>
-      <div style="position:absolute;left:50%;transform:translateX(-50%);width:23px;height:100%;background:#f3c1ad"></div>
-    </div>
-    <p class="script" style="font-size:20px">Tap to open...</p>
-    <div id="giftmsg" style="display:none">
-      <h2>Ek baat aur... 🥺</h2>
-      <p class="script" style="font-size:20px">Jo shayad main kabhi properly keh nahi paaya.</p>
-      <button class="next" onclick="go(10)">Read it →</button>
-    </div>
-  </div>
-</section>
+<!-- 9: BIRTHDAY WISH -->
+<section class="page" id="p9"><button class="back" onclick="go(8)">← Back</button><div class="wrap">
+ <div class="letter"><p class="dear">Dear Varsha, 🤍</p>
+ <p>Aaj bas dil se yahi wish karta hoon ki aap hamesha khush raho. 🥺🤍</p>
+ <p>Aapke saare dreams poore ho, aapko life mein har woh khushi mile jo aap deserve karti ho, aur aapki woh beautiful smile kabhi kam na ho. ❤️</p>
+ <p>Aap meri life mein kya ho, shayad main kabhi perfectly words mein explain na kar paun. 🥺 Bas itna jaanta hoon ki aap mere liye ordinary nahi ho. 🤍</p>
+ <p>Aaj ka din sirf aapka hai, isliye bas smile karte rehna, khush rehna aur apna bahut saara khayal rakhna. 🌷</p>
+ <p>Once again, Happiest Birthday to youuu, Varsha! 🥹❤️🎂</p>
+ <p>Hamesha khush rehna. 🤍🫶🏻</p></div>
+ <button class="btn" onclick="go(10)">Next →</button></div></section>
 
-<section class="page" id="p10">
-  <button class="back" onclick="go(9)">← Back</button>
-  <div class="wrap">
-    <div class="sub">Something from my heart</div>
-    <div class="feelings">
-      <p class="lead">Varsha, shayad main kabhi perfectly words mein explain na kar paun ki aap mere liye kya ho. 🥺🤍</p>
-      <p>Sach kahun toh mujhe aapse <b>bahut zyada pyaar ho gaya hai.</b> Itna ki aap meri life ka ek bahut important part ban gayi ho.</p>
-      <p>Aapse baat ho jaaye toh din thoda aur achha lagta hai, aur jab baat nahi hoti toh aapki yaad aati rehti hai. 🥺</p>
-      <p>Kabhi-kabhi khud se bhi poochta hoon ki 8 months tak baat na hone ke baad bhi main aapko bhool kyun nahi paaya... aur shayad iska jawab mere paas bhi nahi hai.</p>
-      <p>Main aapko kisi cheez ke liye force nahi karna chahta. Aapki feelings, aapki comfort aur aapke decisions mere liye important hain. 🤍</p>
-      <p>Bas chahta hoon ki aap kabhi ye na socho ki meri feelings sirf ek temporary attraction hain. <b>Jo bhi hai, genuinely hai.</b></p>
-      <p>Pata nahi future kya hoga... lekin aaj jo feel karta hoon, woh dil se karta hoon.</p>
-      <p><b>Aap mere liye ordinary nahi ho, Varsha... aap genuinely bahut special ho. ❤️</b></p>
-    </div>
-    <button class="next" onclick="go(11)">Last page →</button>
-  </div>
-</section>
+<!-- 10: FEELINGS -->
+<section class="page" id="p10"><button class="back" onclick="go(9)">← Back</button><div class="wrap">
+ <div class="mini">One more thing...</div>
+ <div class="feel">
+ <p class="big">Varsha, shayad main kabhi perfectly words mein explain na kar paun ki aap mere liye kya ho. 🥺🤍</p>
+ <p>Sach kahun toh mujhe aapse <b>bahut zyada pyaar ho gaya hai.</b> Itna ki aap meri life ka ek bahut important part ban gayi ho.</p>
+ <p>Aapse baat ho jaaye toh din thoda aur achha lagta hai, aur jab baat nahi hoti toh aapki yaad aati rehti hai.</p>
+ <p>Kabhi-kabhi khud se bhi poochta hoon ki 8 months tak baat na hone ke baad bhi main aapko bhool kyun nahi paaya... shayad iska jawab mere paas bhi nahi hai.</p>
+ <p>Main aapko kisi cheez ke liye force nahi karna chahta. Aapki feelings, aapki comfort aur aapke decisions mere liye important hain. 🤍</p>
+ <p>Bas itna kehna tha ki jo bhi feel karta hoon, woh genuinely hai. Pata nahi future kya hoga, lekin aaj jo feel karta hoon woh dil se karta hoon.</p>
+ <p><b>Aap mere liye ordinary nahi ho, Varsha... aap genuinely bahut special ho. ❤️</b></p>
+ </div><button class="btn" onclick="go(11)">Last page →</button></div></section>
 
-<section class="page final" id="p11">
-  <div class="wrap">
-    <div class="sub">12 • 09 • 2010</div>
-    <h1>Happiest Birthday,<br>Varsha 🎀</h1>
-    <p>Aap hamesha khush raho,<br>aapki beautiful smile kabhi kam na ho,<br>aur aapko life mein har woh khushi mile<br>jo aap deserve karti ho. 🤍</p>
-    <p style="font-size:28px;margin-top:30px"><b>Hamesha khush rehna. 🥹❤️🎂</b></p>
-    <button class="next" style="color:#fff3e6;border-color:#d49a91" onclick="celebrate()">Celebrate ✨</button>
-  </div>
-</section>
+<!-- 11: FINAL -->
+<section class="page final" id="p11"><div class="wrap">
+ <div class="mini">12 • 09 • 2010</div><h1>Happiest<br>Birthday,<br>Varsha 🎀</h1>
+ <p class="italic" style="font-size:23px;line-height:1.45">Aap hamesha khush raho,<br>aapki beautiful smile kabhi kam na ho,<br>aur aapko life mein har woh khushi mile<br>jo aap deserve karti ho. 🤍</p>
+ <p class="italic" style="font-size:27px">Hamesha khush rehna. 🥹❤️🎂</p>
+ <button class="btn" style="color:#fff0e4;border-color:#d49a91;background:#ffffff12" onclick="celebrate()">Celebrate ✨</button>
+</div></section>
 
 <script>
-let current=1,code="";
-function go(n){
-  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-  document.getElementById("p"+n).classList.add("active");
-  current=n;
-}
-function openEnv(){
-  document.getElementById("env").classList.add("open");
-  document.getElementById("envhint").textContent="Aapke liye ek chhota sa message... 🤍";
-}
-function key(n){
-  if(code.length<4) code+=n;
-  document.getElementById("display").textContent=code.padEnd(4,"•");
-}
-function clearKey(){code=code.slice(0,-1);document.getElementById("display").textContent=code.padEnd(4,"•")}
-function unlock(){
-  if(code==="1209"){document.getElementById("err").textContent="Unlocked ♡";setTimeout(()=>go(4),500)}
-  else{document.getElementById("err").textContent="Almost... hint is 12 09 🤍";code="";document.getElementById("display").textContent="••••"}
-}
-function blow(){
-  document.getElementById("cake").classList.add("blown");
-  document.getElementById("cakehint").textContent="Happy Birthday, Varsha! 🎂🤍";
-}
-function gift(){
-  document.getElementById("lid").style.transform="translateY(-45px) rotate(-7deg)";
-  document.getElementById("gift").style.opacity="0";
-  setTimeout(()=>{document.getElementById("gift").style.display="none";document.getElementById("giftmsg").style.display="block";celebrate()},600);
-}
-function celebrate(){
-  for(let i=0;i<70;i++){
-    let c=document.createElement("i");c.className="confetti";
-    c.style.left=Math.random()*100+"vw";
-    c.style.background=["#d88f8c","#efb7ae","#e8c79e","#fff0d9"][Math.floor(Math.random()*4)];
-    c.style.animationDelay=Math.random()*1.2+"s";
-    document.body.appendChild(c);setTimeout(()=>c.remove(),4200);
-  }
-}
+let page=1,code="";
+function go(n){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById("p"+n).classList.add("active");page=n;window.scrollTo(0,0)}
+function key(n){if(code.length<4)code+=n;document.getElementById("display").textContent=code.padEnd(4,"•")}
+function clr(){code=code.slice(0,-1);document.getElementById("display").textContent=code.padEnd(4,"•")}
+function unlock(){if(code==="1209"){document.getElementById("err").textContent="Unlocked ♡";setTimeout(()=>go(4),450)}else{document.getElementById("err").textContent="Hint: 12 • 09 🤍";code="";document.getElementById("display").textContent="••••"}}
+function blow(){document.getElementById("cake").classList.add("blown");document.getElementById("cakeText").textContent="Happy Birthday, Varsha! 🎂🤍"}
+function celebrate(){for(let i=0;i<75;i++){let x=document.createElement("i");x.className="conf";x.style.left=Math.random()*100+"vw";x.style.background=["#d88f8c","#efb7ae","#e8c79e","#fff0d9"][Math.floor(Math.random()*4)];x.style.animationDelay=Math.random()*1.1+"s";document.body.appendChild(x);setTimeout(()=>x.remove(),4300)}}
+for(let i=0;i<28;i++){let x=document.createElement("span");x.className="fall";x.textContent=Math.random()>.5?"🌸":"🌷";x.style.left=Math.random()*100+"%";x.style.animationDelay=Math.random()*7+"s";x.style.animationDuration=(5+Math.random()*5)+"s";document.getElementById("flowers").appendChild(x)}
 </script>
 </body>
-      </html>
+    </html>
